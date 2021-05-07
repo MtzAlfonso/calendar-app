@@ -2,23 +2,13 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav
-      className="navbar is-dark"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container">
-        <div className="navbar-brand">
-          <div className="navbar-item">Alfonso</div>
-        </div>
-
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <button className="button is-danger">Salir</button>
-            </div>
-          </div>
-        </div>
+        <span className="navbar-brand">Alfonso</span>
+        <button className="btn btn-outline-danger px-4">
+          <i className="fas fa-sign-out-alt me-1"></i>
+          Salir
+        </button>
       </div>
     </nav>
   );

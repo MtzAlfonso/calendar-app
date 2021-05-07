@@ -1,5 +1,50 @@
+// * VARIABLES PARA BOOTSTRAP
+
 $primary: #645ad6;
 $secondary: darken($primary, 20);
-$danger: #ff4136;
+$danger: #ff369b;
+$light: rgb(247, 248, 249);
+$gradient: radial-gradient(
+  circle at 0% 0%,
+  #e176ff 0,
+  #995eff 25%,
+  #4d42d4 50%,
+  #00279c 75%,
+  #00116a 100%
+);
 
 $border-radius: 30px;
+
+// * VARIABLES PARA BIGCALENDAR
+
+$out-of-range-color: lighten($primary, 90%);
+$out-of-range-bg-color: transparentize(#c897ff, 0.3);
+
+$calendar-border: rgba(0, 0, 0, 0);
+$cell-border: transparentize($secondary, 0.8);
+
+$border-color: rgba(0, 0, 0, 0);
+
+$segment-width: percentage(1 / 7);
+
+$time-selection-color: white;
+$time-selection-bg-color: rgba(0, 0, 0, 0.5);
+$date-selection-bg-color: rgba(0, 0, 0, 0.1);
+
+$event-bg: #0075fa;
+$event-border: darken(#0075fa, 10%);
+$event-outline: lighten(#0075fa, 15%);
+$event-color: #fff;
+$event-border-radius: 0;
+$event-padding: 2px 5px;
+$event-zindex: 4;
+
+$btn-color: $light;
+$btn-bg: lighten($primary, 5%);
+$btn-border: rgba(0, 0, 0, 0);
+
+$current-time-color: #82e90c;
+
+$rbc-css-prefix: rbc-i;
+
+$today-highlight-bg: lighten($primary, 15%);

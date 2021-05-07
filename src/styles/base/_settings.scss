@@ -20,17 +20,31 @@
 }
 
 body {
-  background: radial-gradient(
-    circle at 0% 0%,
-    #e176ff 0,
-    #995eff 25%,
-    #4d42d4 50%,
-    #00279c 75%,
-    #00116a 100%
-  );
-  background-repeat: repeat;
-  background-size: cover;
+  background-image: $gradient;
+  min-height: 100vh;
 }
 .login {
   min-height: 100vh;
+}
+
+.calendar-screen {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  background-color: transparentize($danger, 0.8);
+  color: $light;
+  padding-top: 70px;
+}
+
+.rbc-calendar {
+  height: 100%;
+}
+
+.rbc-agenda-table {
+  thead {
+    background-color: darken($primary, 10%);
+  }
+  tbody {
+    background-color: lighten($primary, 10%);
+  }
 }
