@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'AvenirLTStd';
+  src: local('Avenir'),
+    url('../../fonts/AvenirLTStd-Roman.otf') format('opentype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'AvenirLTStd';
+  src: local('Avenir'),
+    url('../../fonts/AvenirLTStd-Black.otf') format('opentype');
+  font-weight: bold;
+}
+
+* {
+  font-family: Avenir, AvenirLTStd, Helvetica, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(
+    circle at 0% 0%,
+    #e176ff 0,
+    #995eff 25%,
+    #4d42d4 50%,
+    #00279c 75%,
+    #00116a 100%
+  );
+  background-repeat: repeat;
+  background-size: cover;
+}
+.login {
+  min-height: 100vh;
+}
