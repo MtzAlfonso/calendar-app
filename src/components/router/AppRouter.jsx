@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import LoginScreen from '../auth/LoginScreen';
+import RegisterScreen from '../auth/RegisterScreen';
 import CalendarScreen from '../calendar/CalendarScreen';
 
 const AppRouter = () => {
@@ -14,6 +15,7 @@ const AppRouter = () => {
       <div>
         <Switch>
           <Route exact path="/login" component={LoginScreen} />
+          <Route exact path="/register" component={RegisterScreen} />
           <Route exact path="/" component={CalendarScreen} />
           <Redirect to="/" />
         </Switch>

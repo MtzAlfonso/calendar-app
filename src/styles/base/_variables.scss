@@ -1,9 +1,23 @@
 // * VARIABLES PARA BOOTSTRAP
 
+$danger: #c15050;
+$dark: #282846;
 $primary: #645ad6;
-$secondary: darken($primary, 20);
-$danger: #ff369b;
-$light: rgb(247, 248, 249);
+$light: lighten($primary, 33%);
+$secondary: #413c69;
+$success: #325288;
+$white: #fafafa;
+
+$theme-colors: (
+  'danger': $danger,
+  'dark': $dark,
+  'light': $light,
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'white': $white,
+);
+
 $gradient: radial-gradient(
   circle at 0% 0%,
   #e176ff 0,
@@ -13,7 +27,7 @@ $gradient: radial-gradient(
   #00116a 100%
 );
 
-$border-radius: 30px;
+$border-radius: 20px;
 
 // * VARIABLES PARA BIGCALENDAR
 

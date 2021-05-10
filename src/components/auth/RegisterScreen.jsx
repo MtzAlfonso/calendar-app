@@ -1,13 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   return (
     <div className="container align-items-center justify-content-center login d-flex">
       <div className="row my-auto w-100 justify-content-center">
         <div className="col-12 col-md-6 my-2 bg-light card shadow py-5 align-items-center">
-          <h2 className="fw-bold text-center pb-3 text-primary">Ingreso</h2>
+          <h2 className="fw-bold text-center pb-3 text-primary">Registro</h2>
           <form className="w-75">
+            <div className="mb-2">
+              <div className="input-group">
+                <div className="input-group-text">
+                  <i className="text-secondary fas fa-user"></i>
+                </div>
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre"
+                  className="form-control"
+                />
+              </div>
+            </div>
             <div className="mb-2">
               <div className="input-group">
                 <div className="input-group-text">
@@ -34,10 +47,23 @@ const LoginScreen = () => {
                 />
               </div>
             </div>
+            <div className="mb-2">
+              <div className="input-group">
+                <div className="input-group-text">
+                  <i className="text-secondary fas fa-unlock-alt"></i>
+                </div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Confirma password"
+                  className="form-control"
+                />
+              </div>
+            </div>
             <div className="text-center">
-              <button className="btn btn-primary my-4 px-5">Login</button>
+              <button className="btn btn-primary my-4 px-5">Sign In</button>
               <div>
-                <Link to="/register">Crear una nueva cuenta</Link>
+                <Link to="/login">Ya estás registrado?</Link>
               </div>
             </div>
           </form>
@@ -47,4 +73,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;

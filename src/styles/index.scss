@@ -1,4 +1,5 @@
 @import 'base/variables';
-@import 'base/settings';
 @import '~bootstrap/scss/bootstrap';
-@import '~react-big-calendar/lib/sass/styles'
+@import '~react-big-calendar/lib/sass/styles';
+@import 'base/settings';
+@import 'base/modal';
