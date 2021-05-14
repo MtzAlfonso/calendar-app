@@ -28,13 +28,38 @@ const CalendarModal = () => {
 
   const [dateStart, setDateStart] = useState(now.toDate());
   const [dateEnd, setDateEnd] = useState(end.toDate());
+  const [formValues, setFormValues] = useState({
+    title: 'Evento',
+    notes: '',
+    start: now.toDate(),
+    end: end.toDate(),
+  });
+
+  const { title, notes } = formValues;
+
+  const handleInputChange = ({ target }) => {
+    setFormValues({ ...formValues, [target.name]: target.value });
+  };
 
   const handleStartDateChange = (e) => {
     setDateStart(e);
+    setFormValues({
+      ...formValues,
+      start: e,
+    });
   };
 
   const handleEndDateChange = (e) => {
     setDateEnd(e);
+    setFormValues({
+      ...formValues,
+      end: e,
+    });
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    console.log(formValues);
   };
 
   return (
@@ -51,7 +76,7 @@ const CalendarModal = () => {
         onClick={closeModal}
       ></i>
       <h3 className="me-auto ps-3 my-3 text-uppercase fw-bold">Nuevo evento</h3>
-      <form className="container">
+      <form className="container" onSubmit={handleSubmitForm}>
         <div className="input-group my-4">
           <div className="input-group-text bg-primary">
             <i className="fas fa-calendar-alt text-white"></i>
@@ -87,7 +112,10 @@ const CalendarModal = () => {
             className="form-control"
             placeholder="Título del evento"
             name="title"
+            value={title}
             autoComplete="off"
+            required
+            onChange={handleInputChange}
           />
         </div>
 
@@ -96,8 +124,10 @@ const CalendarModal = () => {
             type="text"
             className="form-control"
             placeholder="Notas adicionales"
+            value={notes}
             rows="4"
             name="notes"
+            onChange={handleInputChange}
           ></textarea>
         </div>
 
