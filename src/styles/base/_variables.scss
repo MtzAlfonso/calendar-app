@@ -31,8 +31,8 @@ $border-radius: 20px;
 
 // * VARIABLES PARA BIGCALENDAR
 
-$out-of-range-color: lighten($primary, 90%);
-$out-of-range-bg-color: transparentize(#c897ff, 0.3);
+$out-of-range-color: darken($light, 20%);
+$out-of-range-bg-color: transparentize($light, 0.75);
 
 $calendar-border: rgba(0, 0, 0, 0);
 $cell-border: transparentize($secondary, 0.8);
@@ -54,11 +54,11 @@ $event-padding: 2px 5px;
 $event-zindex: 4;
 
 $btn-color: $light;
-$btn-bg: lighten($primary, 5%);
+$btn-bg: lighten(#0075fa, 10%);
 $btn-border: rgba(0, 0, 0, 0);
 
 $current-time-color: #82e90c;
 
 $rbc-css-prefix: rbc-i;
 
-$today-highlight-bg: lighten($primary, 15%);
+$today-highlight-bg: transparentize($dark, 0.55);

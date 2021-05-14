@@ -45,7 +45,7 @@ const CalendarScreen = () => {
       backgroundColor: '#bc123e',
       borderColor: '#bc123e',
       borderRadius: '0px',
-      opacity: '0.8',
+      opacity: '0.9',
       zIndex: '1',
       display: 'block',
       color: 'white',

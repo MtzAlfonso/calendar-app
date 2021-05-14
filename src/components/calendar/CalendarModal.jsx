@@ -86,7 +86,7 @@ const CalendarModal = () => {
             value={dateStart}
             minDate={now.toDate()}
             className="form-control"
-            format="dd / MMM / yyyy  HH:mm"
+            format="dd / MM / yyyy  HH:mm"
           />
         </div>
 
@@ -99,7 +99,7 @@ const CalendarModal = () => {
             value={dateEnd}
             minDate={dateStart}
             className="form-control"
-            format="dd / MMM / yyyy  HH:mm"
+            format="dd / MM / yyyy  HH:mm"
           />
         </div>
 
