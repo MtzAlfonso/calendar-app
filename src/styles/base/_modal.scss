@@ -59,3 +59,10 @@
     color: darken($success, 20%) !important;
   }
 }
+
+.react-datetime-picker__wrapper {
+  border-color: transparent !important;
+  span {
+    margin: auto !important;
+  }
+}
