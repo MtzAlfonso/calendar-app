@@ -2,40 +2,35 @@ import React, { useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import Modal from 'react-modal';
+import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiCloseModal } from '../../actions/uiActions';
+import customStyles from './customStyles';
 
 const now = moment().minutes(0).seconds(0).add(1, 'hour');
-const end = now.clone().add(1, 'hour');
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
+const nowPlusOne = now.clone().add(1, 'hour');
 Modal.setAppElement('#root');
 
+
 const CalendarModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const { modalOpen } = useSelector((state) => state.ui);
+  const dispatch = useDispatch();
 
   const closeModal = () => {
-    setIsOpen(false);
+    dispatch(uiCloseModal());
   };
 
   const [dateStart, setDateStart] = useState(now.toDate());
-  const [dateEnd, setDateEnd] = useState(end.toDate());
+  const [dateEnd, setDateEnd] = useState(nowPlusOne.toDate());
+  const [titleValid, setTitleValid] = useState(true);
   const [formValues, setFormValues] = useState({
-    title: 'Evento',
+    title: '',
     notes: '',
     start: now.toDate(),
-    end: end.toDate(),
+    end: nowPlusOne.toDate(),
   });
 
-  const { title, notes } = formValues;
+  const { title, notes, start, end } = formValues;
 
   const handleInputChange = ({ target }) => {
     setFormValues({ ...formValues, [target.name]: target.value });
@@ -59,14 +54,32 @@ const CalendarModal = () => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    const momentStart = moment(start);
+    const momentEnd = moment(end);
+
+    if (momentStart.isSameOrAfter(momentEnd)) {
+      return Swal.fire(
+        'Error',
+        'La fecha final debe ser mayor a la de inicio.',
+        'error'
+      );
+    }
+
+    if (title.trim().length < 2) {
+      return setTitleValid(false);
+    }
+
+    // TODO: Grabar en base de datos
+
+    setTitleValid(true);
+    closeModal();
   };
 
   return (
     <Modal
       className="modal pb-3"
       closeTimeoutMS={200}
-      isOpen={isOpen}
+      isOpen={modalOpen}
       onRequestClose={closeModal}
       overlayClassName="modal-fondo"
       style={customStyles}
@@ -109,14 +122,14 @@ const CalendarModal = () => {
           </div>
           <input
             type="text"
-            className="form-control"
+            className={`form-control ${!titleValid && 'is-invalid'}`}
             placeholder="Título del evento"
             name="title"
             value={title}
             autoComplete="off"
-            required
             onChange={handleInputChange}
           />
+          <div className="invalid-feedback">El título es muy corto</div>
         </div>
 
         <div className="form-group">

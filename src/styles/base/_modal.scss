@@ -66,3 +66,9 @@
     margin: auto !important;
   }
 }
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -1px;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+}

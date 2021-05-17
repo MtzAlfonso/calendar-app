@@ -48,3 +48,10 @@ body {
     background-color: lighten($primary, 10%);
   }
 }
+
+.was-validated .input-group .form-control:invalid,
+.input-group .form-control.is-invalid,
+.was-validated .input-group .form-select:invalid,
+.input-group .form-select.is-invalid {
+  z-index: 0;
+}
