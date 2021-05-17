@@ -2,6 +2,7 @@
 
 $danger: #c15050;
 $dark: #282846;
+$info: #8d42d4;
 $primary: #645ad6;
 $light: lighten($primary, 33%);
 $secondary: #413c69;
@@ -11,6 +12,7 @@ $white: #fafafa;
 $theme-colors: (
   'danger': $danger,
   'dark': $dark,
+  'info': $info,
   'light': $light,
   'primary': $primary,
   'secondary': $secondary,
@@ -45,16 +47,16 @@ $time-selection-color: white;
 $time-selection-bg-color: rgba(0, 0, 0, 0.5);
 $date-selection-bg-color: rgba(0, 0, 0, 0.1);
 
-$event-bg: #0075fa;
-$event-border: darken(#0075fa, 10%);
-$event-outline: lighten(#0075fa, 15%);
+$event-bg: $info;
+$event-border: darken($info, 10%);
+$event-outline: lighten($info, 15%);
 $event-color: #fff;
 $event-border-radius: 0;
 $event-padding: 2px 5px;
 $event-zindex: 4;
 
 $btn-color: $light;
-$btn-bg: lighten(#0075fa, 10%);
+$btn-bg: lighten($success, 10%);
 $btn-border: rgba(0, 0, 0, 0);
 
 $current-time-color: #82e90c;

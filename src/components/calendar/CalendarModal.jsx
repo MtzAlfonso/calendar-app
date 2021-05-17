@@ -88,7 +88,7 @@ const CalendarModal = () => {
         className="ms-auto pe-3 pt-3 fas fa-times text-success close"
         onClick={closeModal}
       ></i>
-      <h3 className="me-auto ps-3 my-3 text-uppercase fw-bold">Nuevo evento</h3>
+      <h3 className="me-auto ps-3 my-3 text-uppercase fw-bold">Agregar evento</h3>
       <form className="container" onSubmit={handleSubmitForm}>
         <div className="input-group my-4">
           <div className="input-group-text bg-primary">

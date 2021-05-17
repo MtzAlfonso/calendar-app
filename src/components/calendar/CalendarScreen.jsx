@@ -8,6 +8,8 @@ import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import { useDispatch } from 'react-redux';
 import { uiOpenModal } from '../../actions/uiActions';
+import { eventSetActive } from '../../actions/eventsActions';
+import AddNewFab from '../ui/AddNewFab';
 
 moment.locale('es');
 const localizer = momentLocalizer(moment);
@@ -16,7 +18,6 @@ const events = [
     title: 'Evento de prueba',
     start: moment().toDate(),
     end: moment().add(2, 'hours').toDate(),
-    bgcolor: '#FAFAFA',
     notes: 'Comprar el pastel',
     user: {
       _id: '123',
@@ -36,7 +37,7 @@ const CalendarScreen = () => {
   };
 
   const onSelectEvent = (e) => {
-    // console.log(e);
+    dispatch(eventSetActive(e));
   };
 
   const onViewChange = (lastView) => {
@@ -76,6 +77,7 @@ const CalendarScreen = () => {
           startAccesor="start"
           view={lastView}
         />
+        <AddNewFab />
         <CalendarModal />
       </div>
     </div>
