@@ -6,27 +6,28 @@ import moment from 'moment';
 import 'moment/locale/es';
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal } from '../../actions/uiActions';
 import { eventSetActive } from '../../actions/eventsActions';
 import AddNewFab from '../ui/AddNewFab';
 
 moment.locale('es');
 const localizer = momentLocalizer(moment);
-const events = [
-  {
-    title: 'Evento de prueba',
-    start: moment().toDate(),
-    end: moment().add(2, 'hours').toDate(),
-    notes: 'Comprar el pastel',
-    user: {
-      _id: '123',
-      name: 'Alfonso',
-    },
-  },
-];
+// const events = [
+//   {
+//     title: 'Evento de prueba',
+//     start: moment().toDate(),
+//     end: moment().add(2, 'hours').toDate(),
+//     notes: 'Comprar el pastel',
+//     user: {
+//       _id: '123',
+//       name: 'Alfonso',
+//     },
+//   },
+// ];
 
 const CalendarScreen = () => {
+  const { events } = useSelector((state) => state.calendar);
   const dispatch = useDispatch();
   const [lastView, setLastView] = useState(
     localStorage.getItem('lastView') || 'month'

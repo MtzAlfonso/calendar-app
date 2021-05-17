@@ -6,11 +6,11 @@ import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../../actions/uiActions';
 import customStyles from './customStyles';
+import { eventAddNew } from '../../actions/eventsActions';
 
 const now = moment().minutes(0).seconds(0).add(1, 'hour');
 const nowPlusOne = now.clone().add(1, 'hour');
 Modal.setAppElement('#root');
-
 
 const CalendarModal = () => {
   const { modalOpen } = useSelector((state) => state.ui);
@@ -70,6 +70,16 @@ const CalendarModal = () => {
     }
 
     // TODO: Grabar en base de datos
+    dispatch(
+      eventAddNew({
+        ...formValues,
+        id: new Date().getTime(),
+        user: {
+          _id: '123',
+          name: 'Alfonso',
+        },
+      })
+    );
 
     setTitleValid(true);
     closeModal();
@@ -88,7 +98,9 @@ const CalendarModal = () => {
         className="ms-auto pe-3 pt-3 fas fa-times text-success close"
         onClick={closeModal}
       ></i>
-      <h3 className="me-auto ps-3 my-3 text-uppercase fw-bold">Agregar evento</h3>
+      <h3 className="me-auto ps-3 my-3 text-uppercase fw-bold">
+        Agregar evento
+      </h3>
       <form className="container" onSubmit={handleSubmitForm}>
         <div className="input-group my-4">
           <div className="input-group-text bg-primary">
