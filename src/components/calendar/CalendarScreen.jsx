@@ -13,18 +13,6 @@ import AddNewFab from '../ui/AddNewFab';
 
 moment.locale('es');
 const localizer = momentLocalizer(moment);
-// const events = [
-//   {
-//     title: 'Evento de prueba',
-//     start: moment().toDate(),
-//     end: moment().add(2, 'hours').toDate(),
-//     notes: 'Comprar el pastel',
-//     user: {
-//       _id: '123',
-//       name: 'Alfonso',
-//     },
-//   },
-// ];
 
 const CalendarScreen = () => {
   const { events } = useSelector((state) => state.calendar);
