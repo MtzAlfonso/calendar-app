@@ -21,7 +21,7 @@ const CalendarScreen = () => {
     localStorage.getItem('lastView') || 'month'
   );
 
-  const onDoubleClickEvent = (e) => {
+  const onDoubleClickEvent = () => {
     dispatch(uiOpenModal());
   };
 

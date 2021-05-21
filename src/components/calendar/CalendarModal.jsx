@@ -9,6 +9,7 @@ import customStyles from './customStyles';
 import {
   eventAddNew,
   eventCleanActive,
+  eventDeleted,
   eventUpdated,
 } from '../../actions/eventsActions';
 
@@ -37,12 +38,15 @@ const CalendarModal = () => {
 
   useEffect(() => {
     if (activeEvent) setFormValues(activeEvent);
+    else setFormValues(initEvent);
   }, [activeEvent, setFormValues]);
 
   const closeModal = () => {
     dispatch(uiCloseModal());
-    dispatch(eventCleanActive());
-    setFormValues(initEvent);
+    setTimeout(() => {
+      dispatch(eventCleanActive());
+      setFormValues(initEvent);
+    }, 200);
   };
 
   const handleInputChange = ({ target }) => {
@@ -63,6 +67,11 @@ const CalendarModal = () => {
       ...formValues,
       end: e,
     });
+  };
+
+  const handleDelete = () => {
+    dispatch(uiCloseModal());
+    setTimeout(() => dispatch(eventDeleted()), 200);
   };
 
   const handleSubmitForm = (e) => {
@@ -115,7 +124,7 @@ const CalendarModal = () => {
         onClick={closeModal}
       ></i>
       <h3 className="me-auto ps-3 my-3 text-uppercase fw-bold">
-        Agregar evento
+        {activeEvent ? 'Editar evento' : 'Agregar evento'}
       </h3>
       <form className="container" onSubmit={handleSubmitForm}>
         <div className="input-group my-4">
@@ -172,10 +181,27 @@ const CalendarModal = () => {
           ></textarea>
         </div>
 
-        <button type="submit" className="btn btn-success w-100 my-5">
-          <i className="fas fa-save"></i>
-          <span> Guardar</span>
-        </button>
+        {activeEvent ? (
+          <>
+            <button type="submit" className="btn btn-warning w-100 mt-5">
+              <i className="fas fa-sync-alt"></i>
+              <span> Actualizar</span>
+            </button>
+
+            <button
+              className="btn btn-danger w-100 mt-2 mb-5"
+              onClick={handleDelete}
+            >
+              <i className="fas fa-trash"></i>
+              <span> Eliminar</span>
+            </button>
+          </>
+        ) : (
+          <button type="submit" className="btn btn-success w-100 my-5">
+            <i className="fas fa-save"></i>
+            <span> Guardar</span>
+          </button>
+        )}
       </form>
     </Modal>
   );

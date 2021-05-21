@@ -7,6 +7,7 @@ $primary: #645ad6;
 $light: lighten($primary, 33%);
 $secondary: #413c69;
 $success: #325288;
+$warning: #ffc93c;
 $white: #fafafa;
 
 $theme-colors: (
@@ -18,6 +19,7 @@ $theme-colors: (
   'secondary': $secondary,
   'success': $success,
   'white': $white,
+  'warning': $warning,
 );
 
 $gradient: radial-gradient(
