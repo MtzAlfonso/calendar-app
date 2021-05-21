@@ -6,7 +6,11 @@ import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../../actions/uiActions';
 import customStyles from './customStyles';
-import { eventAddNew, eventCleanActive } from '../../actions/eventsActions';
+import {
+  eventAddNew,
+  eventCleanActive,
+  eventUpdated,
+} from '../../actions/eventsActions';
 
 const now = moment().minutes(0).seconds(0).add(1, 'hour');
 const nowPlusOne = now.clone().add(1, 'hour');
@@ -78,17 +82,20 @@ const CalendarModal = () => {
       return setTitleValid(false);
     }
 
-    // TODO: Grabar en base de datos
-    dispatch(
-      eventAddNew({
-        ...formValues,
-        id: new Date().getTime(),
-        user: {
-          _id: '123',
-          name: 'Alfonso',
-        },
-      })
-    );
+    if (activeEvent) {
+      dispatch(eventUpdated(formValues));
+    } else {
+      dispatch(
+        eventAddNew({
+          ...formValues,
+          id: new Date().getTime(),
+          user: {
+            _id: '123',
+            name: 'Alfonso',
+          },
+        })
+      );
+    }
 
     setTitleValid(true);
     closeModal();
