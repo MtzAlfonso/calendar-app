@@ -1,13 +1,33 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { startLogin } from '../../actions/authActions';
+import { useForm } from '../../hooks/useForm';
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
+  // const { checking } = useSelector((state) => state.auth);
+
+  const initialForm = {
+    email: '',
+    password: '',
+  };
+
+  const [formLoginValues, handleLoginInputChange] = useForm(initialForm);
+
+  const { email, password } = formLoginValues;
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(startLogin(email, password));
+  };
+
   return (
     <div className="container align-items-center justify-content-center login d-flex">
       <div className="row my-auto w-100 justify-content-center">
         <div className="col-12 col-md-6 my-2 bg-light card shadow py-5 align-items-center">
           <h2 className="fw-bold text-center pb-3 text-primary">Ingreso</h2>
-          <form className="w-75">
+          <form className="w-75" onSubmit={handleLogin}>
             <div className="mb-2">
               <div className="input-group">
                 <div className="input-group-text">
@@ -18,6 +38,8 @@ const LoginScreen = () => {
                   name="email"
                   placeholder="Correo"
                   className="form-control"
+                  onChange={handleLoginInputChange}
+                  value={email}
                 />
               </div>
             </div>
@@ -31,6 +53,8 @@ const LoginScreen = () => {
                   name="password"
                   placeholder="Password"
                   className="form-control"
+                  onChange={handleLoginInputChange}
+                  value={password}
                 />
               </div>
             </div>
