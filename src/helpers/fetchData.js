@@ -14,11 +14,14 @@ export const fetchWithoutToken = (endpoint, data, method = 'GET') => {
       });
 };
 
-export const fetchWithToken = (endpoint, data, method = 'GET', token) => {
+export const fetchWithToken = (endpoint, data, method = 'GET') => {
   const url = `${baseUrl}/${endpoint}`;
+
+  const token = localStorage.getItem('token') || '';
 
   return method === 'GET'
     ? fetch(url, {
+        method,
         headers: {
           'Content-Type': 'application/json',
           'x-token': token,
