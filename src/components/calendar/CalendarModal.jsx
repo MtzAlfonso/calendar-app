@@ -10,7 +10,7 @@ import {
   eventStartAddNew,
   eventCleanActive,
   eventDeleted,
-  eventUpdated,
+  eventStartUpdate,
 } from '../../actions/eventsActions';
 
 const now = moment().minutes(0).seconds(0).add(1, 'hour');
@@ -92,7 +92,7 @@ const CalendarModal = () => {
     }
 
     if (activeEvent) {
-      dispatch(eventUpdated(formValues));
+      dispatch(eventStartUpdate(formValues));
     } else {
       dispatch(eventStartAddNew(formValues));
     }
@@ -125,7 +125,6 @@ const CalendarModal = () => {
           <DateTimePicker
             onChange={handleStartDateChange}
             value={dateStart}
-            minDate={now.toDate()}
             className="form-control"
             format="dd / MM / yyyy  HH:mm"
           />
