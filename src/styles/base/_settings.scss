@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'AvenirLTStd';
+  src: local('Avenir'),
+    url('../../fonts/AvenirLTStd-Roman.otf') format('opentype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'AvenirLTStd';
+  src: local('Avenir'),
+    url('../../fonts/AvenirLTStd-Black.otf') format('opentype');
+  font-weight: bold;
+}
+
+* {
+  font-family: Avenir, AvenirLTStd, Helvetica, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: $gradient;
+  min-height: 100vh;
+}
+.login {
+  min-height: 100vh;
+}
+
+.calendar-screen {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  color: $light;
+}
+
+.rbc-calendar {
+  padding-top: 70px;
+  height: 100%;
+  background-color: transparentize($primary, 0);
+}
+
+.rbc-agenda-table {
+  thead {
+    background-color: darken($primary, 10%);
+  }
+  tbody {
+    background-color: lighten($primary, 10%);
+  }
+}
+
+.was-validated .input-group .form-control:invalid,
+.input-group .form-control.is-invalid,
+.was-validated .input-group .form-select:invalid,
+.input-group .form-select.is-invalid {
+  z-index: 0;
+}
