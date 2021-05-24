@@ -23,7 +23,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="container align-items-center justify-content-center login d-flex">
+    <div className="container align-items-center justify-content-center login d-flex animate__animated animate__flipInY">
       <div className="row my-auto w-100 justify-content-center">
         <div className="col-12 col-md-6 my-2 bg-light card shadow py-5 align-items-center">
           <h2 className="fw-bold text-center pb-3 text-primary">Ingreso</h2>
@@ -59,7 +59,7 @@ const LoginScreen = () => {
               </div>
             </div>
             <div className="text-center">
-              <button className="btn btn-primary my-4 px-5">Login</button>
+              <button className="btn btn-primary my-4 px-5">Ingresar</button>
               <div>
                 <Link to="/register">Crear una nueva cuenta</Link>
               </div>

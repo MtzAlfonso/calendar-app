@@ -62,9 +62,9 @@ const CalendarScreen = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <Navbar />
-      <div className="calendar-screen">
+      <div className="calendar-screen animate__animated animate__fadeIn">
         <Calendar
           components={{ event: CalendarEvent }}
           endAccesor="end"

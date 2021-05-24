@@ -24,11 +24,11 @@ const RegisterScreen = () => {
     if (password !== password2) {
       return Swal.fire('Error', 'Las contraseñas no coinciden', 'error');
     }
-    dispatch(startRegister(email, password, name))
+    dispatch(startRegister(email, password, name));
   };
 
   return (
-    <div className="container align-items-center justify-content-center login d-flex">
+    <div className="container align-items-center justify-content-center login d-flex animate__animated animate__flipInY">
       <div className="row my-auto w-100 justify-content-center">
         <div className="col-12 col-md-6 my-2 bg-light card shadow py-5 align-items-center">
           <h2 className="fw-bold text-center pb-3 text-primary">Registro</h2>
@@ -94,7 +94,7 @@ const RegisterScreen = () => {
               </div>
             </div>
             <div className="text-center">
-              <button className="btn btn-primary my-4 px-5">Sign In</button>
+              <button className="btn btn-primary my-4 px-5">Registrar</button>
               <div>
                 <Link to="/login">Ya estás registrado?</Link>
               </div>
