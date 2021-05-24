@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../../actions/uiActions';
 import customStyles from './customStyles';
 import {
-  eventAddNew,
+  eventStartAddNew,
   eventCleanActive,
   eventDeleted,
   eventUpdated,
@@ -94,16 +94,7 @@ const CalendarModal = () => {
     if (activeEvent) {
       dispatch(eventUpdated(formValues));
     } else {
-      dispatch(
-        eventAddNew({
-          ...formValues,
-          id: new Date().getTime(),
-          user: {
-            _id: '123',
-            name: 'Alfonso',
-          },
-        })
-      );
+      dispatch(eventStartAddNew(formValues));
     }
 
     setTitleValid(true);
