@@ -18,7 +18,6 @@ export const eventStartAddNew = (event) => {
             name,
           },
         };
-        console.log(compEvent);
         dispatch(eventAddNew(compEvent));
       }
     } catch (error) {
@@ -63,8 +62,28 @@ const eventUpdated = (event) => ({
   payload: event,
 });
 
-export const eventDeleted = () => ({
+export const eventStartDelete = () => {
+  return async (dispatch, getState) => {
+    const { id } = getState().calendar.activeEvent;
+
+    try {
+      const response = await fetchWithToken(`events/${id}`, {}, 'DELETE');
+      const body = await response.json();
+
+      if (body.ok) {
+        dispatch(eventDeleted(id));
+      } else {
+        Swal.fire('Error', body.msg, 'error');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const eventDeleted = (id) => ({
   type: types.eventDeleted,
+  payload: id,
 });
 
 export const eventStartLoading = () => {

@@ -50,15 +50,19 @@ export const startRegister = (email, password, name) => {
 
 export const startCheking = () => {
   return async (dispatch) => {
-    const response = await fetchWithToken('auth/renew');
-    const body = await response.json();
+    try {
+      const response = await fetchWithToken('auth/renew');
+      const body = await response.json();
 
-    if (body.ok) {
-      localStorage.setItem('token', body.token);
-      localStorage.setItem('token-init-date', new Date().getTime());
-      dispatch(login({ uid: body.uid, name: body.name }));
-    } else {
-      dispatch(checkingFinish());
+      if (body.ok) {
+        localStorage.setItem('token', body.token);
+        localStorage.setItem('token-init-date', new Date().getTime());
+        dispatch(login({ uid: body.uid, name: body.name }));
+      } else {
+        dispatch(checkingFinish());
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };

@@ -9,7 +9,7 @@ import customStyles from './customStyles';
 import {
   eventStartAddNew,
   eventCleanActive,
-  eventDeleted,
+  eventStartDelete,
   eventStartUpdate,
 } from '../../actions/eventsActions';
 
@@ -70,8 +70,8 @@ const CalendarModal = () => {
   };
 
   const handleDelete = () => {
+    dispatch(eventStartDelete());
     dispatch(uiCloseModal());
-    setTimeout(() => dispatch(eventDeleted()), 200);
   };
 
   const handleSubmitForm = (e) => {

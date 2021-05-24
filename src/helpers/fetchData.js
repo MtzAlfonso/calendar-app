@@ -23,7 +23,6 @@ export const fetchWithToken = (endpoint, data, method = 'GET') => {
     ? fetch(url, {
         method,
         headers: {
-          'Content-Type': 'application/json',
           'x-token': token,
         },
       })
