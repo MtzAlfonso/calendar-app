@@ -13,3 +13,23 @@ export const fetchWithoutToken = (endpoint, data, method = 'GET') => {
         body: JSON.stringify(data),
       });
 };
+
+export const fetchWithToken = (endpoint, data, method = 'GET', token) => {
+  const url = `${baseUrl}/${endpoint}`;
+
+  return method === 'GET'
+    ? fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-token': token,
+        },
+      })
+    : fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          'x-token': token,
+        },
+        body: JSON.stringify(data),
+      });
+};
