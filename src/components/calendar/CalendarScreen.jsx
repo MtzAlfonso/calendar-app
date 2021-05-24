@@ -8,7 +8,11 @@ import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal } from '../../actions/uiActions';
-import { eventSetActive, eventStartLoading } from '../../actions/eventsActions';
+import {
+  eventCleanActive,
+  eventSetActive,
+  eventStartLoading,
+} from '../../actions/eventsActions';
 import AddNewFab from '../ui/AddNewFab';
 
 moment.locale('es');
@@ -31,6 +35,10 @@ const CalendarScreen = () => {
 
   const onSelectEvent = (e) => {
     dispatch(eventSetActive(e));
+  };
+
+  const onSelectSlot = (e) => {
+    dispatch(eventCleanActive());
   };
 
   const onViewChange = (lastView) => {
@@ -66,7 +74,9 @@ const CalendarScreen = () => {
           messages={messages}
           onDoubleClickEvent={onDoubleClickEvent}
           onSelectEvent={onSelectEvent}
+          onSelectSlot={onSelectSlot}
           onView={onViewChange}
+          selectable={true}
           startAccesor="start"
           view={lastView}
         />
